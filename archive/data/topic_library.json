@@ -1,0 +1,297 @@
+{
+  "_comment": "Working catalogue of tango topics/skills for an intermediate leader. status: active (working now, MAX 3) | solid (reliable, maintenance) | parked (set aside) | someday (on radar). practice-planner owns this file. Drills tagged [vNN] come from the 'Tango Technique At Home' playlist — full index + mechanics in knowledge/playlist_tango_technique_at_home.md, transcripts in data/transcripts/. active topics here mirror data/state.json.",
+  "_playlist_source": "PLuZgN3SYIPX51KPNL7EzU3Py2AMIIyuXb — solo at-home technique series; see knowledge/playlist_tango_technique_at_home.md",
+  "topics": [
+    {
+      "id": "walk",
+      "name": "The walk (caminada)",
+      "category": "fundamentals",
+      "status": "parked",
+      "notes": "PARKED 2026-06-16 (not abandoned): the PENDULUM engine lives inside the now-active free_leg work, so the walk keeps getting fed. Re-surface when free leg is solid. The foundation of everything. Two engines: PROJECTION (free foot leads through the floor) and PENDULUM (leg swings, weight does the work). A relaxed pendulum walk is naturally dynamic (slow at the ends, fast through vertical). Foot positions: front=knife (outside edge/little toe), back=toes (extended, heel kept inside).",
+      "video_refs": ["v05", "v27", "v29", "v33"],
+      "drills": [
+        "Projection, each direction (side/front/back), slow then fast: project free foot through floor, bend standing leg as you project, stretch it as you close; keep the free leg always moving. [v27]",
+        "Projection + dissociation: same, but turn torso toward standing leg one rep, toward free leg the next; torsion low above the hip, leg stays on its line. [v27]",
+        "Pendulum walk: swing the free leg front-back from the hip with minimum force, knee straight, foot grazing floor — feel the weight do the work. [v33]",
+        "Big vs small step: big = open+bend, push+slide, transfer parallel to floor, close+stretch (4 moves); small = open, transfer, close (3 moves, legs stay straight). [v05]",
+        "Step-size combination: small/big/big forward → side → three back → side, slow then double-time, to a 58bpm metronome. [v05]"
+      ],
+      "last_worked": null
+    },
+    {
+      "id": "posture_axis",
+      "name": "Posture & axis",
+      "category": "fundamentals",
+      "status": "solid",
+      "notes": "Own axis + presence over feet. Ribcage up/forward, weight toward front of feet. Office-job stiffness (thoracic/hips) likely limits this — mobility helps. Stable axis is the prerequisite for clean dissociation, pivots, and giros.",
+      "video_refs": ["v01", "v26", "v31"],
+      "drills": [
+        "Ribcage placement: cross fingers, palms down, straighten elbows, raise overhead and 'push the ceiling' → ribcage lifts, weight moves forward; lower arms but keep the torso there. 4× slow. [v01/v31]",
+        "Wall roll-down: hips on wall, roll spine onto wall vertebra by vertebra and peel off head-first; then reverse (hip forward off the wall first). [v01]",
+        "Stick shoulder-opener: wide grip, pass stick front→overhead→behind and back. [v01]"
+      ],
+      "last_worked": null
+    },
+    {
+      "id": "balance",
+      "name": "Balance (one-leg)",
+      "category": "fundamentals",
+      "status": "solid",
+      "notes": "Standing-leg stability — a 'basic quality you have to work' (his words). Drillable solo; pairs with posture and free-leg control.",
+      "video_refs": ["v01", "v32"],
+      "drills": [
+        "4-point standing-leg series, one leg, 8× each: (1) knee up→extend back, toe floor→lower on both legs→return; (2) same but free foot never touches floor, bend/stretch standing leg without leaning torso; (3) cross behind, lower on both, open, cross other side; (4) bend standing leg while extending free leg to side, flexed foot, hips square. [v01]",
+        "Calf-raise hold: feet together, bounce ×3, rise to toes, hold 3s, lower SLOWLY (control the descent). [v01]",
+        "Fix the gaze on a point on the horizon while balancing. [v01]"
+      ],
+      "last_worked": null
+    },
+    {
+      "id": "embrace",
+      "name": "The embrace (abrazo)",
+      "category": "fundamentals",
+      "status": "solid",
+      "notes": "Connection quality and comfort — biggest driver of whether a follower wants a second tanda. The playlist's embrace video fixes the most common leader mistakes (approach + arm path).",
+      "video_refs": ["v30"],
+      "drills": [
+        "Approach chest-first, arms DOWN (raised arms read as insecurity/barrier); place chest at distance, then arms. [v30]",
+        "Wall drill: touch the partner with the RIBS below the chest (sternum end), not the upper chest. [v30]",
+        "Elbow-circle: arms travel into the embrace in a CURVE using elbows/shoulders (leader's curve more horizontal); to release, rewind the same curve, don't drop the arms. [v30]",
+        "Full sequence: ribcage placement → wall approach → curve into embrace → rewind out. [v30]"
+      ],
+      "last_worked": null
+    },
+    {
+      "id": "dissociation",
+      "name": "Dissociation (disociación)",
+      "category": "fundamentals",
+      "status": "active",
+      "notes": "Upper/lower counter-rotation — engine of ochos, giros, clear lead. Rule: no matter where the torso turns, the free leg keeps its line. Make the torsion LOW (just above the hip), not in the shoulders; head moves with the torso (you follow the partner). Common intermediate limiter, often capped by thoracic/hip mobility.",
+      "video_refs": ["v25", "v14", "v27"],
+      "drills": [
+        "Standing dissociation: feet planted, rotate ribcage over still hips, slow, full range. [v25]",
+        "Walk with upper body facing one wall while hips/feet track the walk. [v01/v27]",
+        "Ocho marking from dissociation + weight change only, no arms. [v01]"
+      ],
+      "last_worked": "2026-06-16"
+    },
+    {
+      "id": "free_leg",
+      "name": "Free-leg control & strength",
+      "category": "fundamentals",
+      "status": "active",
+      "notes": "ACTIVE 2026-06-16 (Patryk's named priority; anchors the boleo work). The free leg 'carries the expressivity' — it's what people watch. Model it as a DOUBLE PENDULUM: hip pendulum (leg in any direction) + knee pendulum (lower leg front/back). Principle: use as little force as possible; let the leg's weight and rebound do the work. High-leverage solo work for a leader; strong free-leg habits make walk, adornments, ganchos all easier. The knee-pendulum REBOUND is the mechanic of the boleo (see boleos topic).",
+      "video_refs": ["v03", "v16", "v23", "v24", "v33"],
+      "drills": [
+        "Single pendulums, 32× each: hip front-back, side open/close, floor front→back→front, knee-only (knees together). Minimum force. [v33]",
+        "Foot-position roll: free leg front/side/back, roll the ankle 16× each direction; learn knife/pretty/toes positions and flow zero→front→side→back, leg always moving. [v03]",
+        "Swing + knee combos (wall then free, 8×4): straight swing → bend knee on back swing → bend knee on front swing (knee taps hand at hip) → both → add cross-back (inertia bends knee) → full combination. [v16]",
+        "Take forward-fold lower-back breaks between sets. [v16]"
+      ],
+      "last_worked": "2026-06-16"
+    },
+    {
+      "id": "weight_transfer",
+      "name": "Weight transfer & marca",
+      "category": "fundamentals",
+      "status": "solid",
+      "notes": "Complete, clear weight changes are how the lead reads; half-transfers force the follower to guess. The change itself is instantaneous — 'like a light switch', never weight on both feet (kills the flow).",
+      "video_refs": ["v04", "v13"],
+      "drills": [
+        "Four weight changes to metronome, each then +90° pivot: basic in place / cross / change-of-leg front / change-of-leg back. [v04]",
+        "Tiny tight circle of the free foot around the standing foot (no big arcs — no time when fast); feet together, stay on one spot. [v04]",
+        "Smooth instantaneous change: move the leg slowly but flip the weight fast, so the movement looks unbroken. [v13]"
+      ],
+      "last_worked": null
+    },
+    {
+      "id": "pivots",
+      "name": "Pivots",
+      "category": "fundamentals",
+      "status": "solid",
+      "notes": "Change of direction on the standing leg — feeds ochos, giros, lápiz. Torso leads, hip follows; press the standing foot into the floor 'like a screwdriver' for control. Drill BOTH directions (toward and away from the standing leg) — the away/anti-natural one is needed for lápiz and sacada entries.",
+      "video_refs": ["v01", "v03", "v04", "v08", "v18"],
+      "drills": [
+        "Prep: weight on one foot, free foot a few cm up, legs tight, turn torso L–center–R 8× each leg. [v01]",
+        "90° pivots, 2 full circles each leg: torso first, then hip, screwdriver press into the floor. [v01]",
+        "Pivots away from the standing leg (harder) as well as toward it. [v01]"
+      ],
+      "last_worked": null
+    },
+    {
+      "id": "ochos",
+      "name": "Ochos (forward & back)",
+      "category": "vocabulary",
+      "status": "solid",
+      "notes": "Lead from dissociation, not arms; clean pivots; vary size/speed musically. TWO techniques, both leader-useful: hip-first (big, dynamic, open embrace = your back-sacada mechanic) and leg-first (small, intimate, close embrace = 'catch her foot' for gancho/pasada).",
+      "video_refs": ["v14", "v15"],
+      "drills": [
+        "Hip-first back ocho: rotate hip → project leg → transfer → close. Half slow → half half-time → full slow → full half-time, wall then free. [v14]",
+        "Leg-first back ocho: relaxed leg circles back and the swing turns the hip (small, close-embrace). Same progression. [v14]",
+        "On the step turn the foot OUTSIDE (big toe down, heel in) so it supports the next pivot; keep arms forward as the hip opens; stay low. [v14]",
+        "Front ochos: same hip-first / leg-first split. [v15]"
+      ],
+      "last_worked": null
+    },
+    {
+      "id": "giros",
+      "name": "Giros (turns)",
+      "category": "vocabulary",
+      "status": "parked",
+      "notes": "Leader walks forward with pivots inside the woman's front-side-back giro. Stay on your own axis as the still center. Parked until walk/dissociation/pivots/balance are deeper — they feed the giro.",
+      "video_refs": ["v17", "v19", "v20"],
+      "drills": [
+        "Base sequence: T-step (90°) + 180° pivot + front step, repeated — 8 steps = one full revolution. Do it low; torso anticipates the next direction; on the 180° leave the foot behind then close. [v17]",
+        "Variation: change-of-weight on the T (front with the same leg); all tricks happen on HER side step. [v17]",
+        "Variation: cross-back front-sacada on her side step; then combine both tricks. [v17]",
+        "Front→back→side transition flips the giro direction. [v17]"
+      ],
+      "last_worked": null
+    },
+    {
+      "id": "the_cross",
+      "name": "The cross (cruzada)",
+      "category": "vocabulary",
+      "status": "solid",
+      "notes": "Leading the cross clearly (vs the follower auto-crossing) and the many exits. Steps-with-crosses drills in the playlist (v06/v07/v08) build cross+pivot coordination.",
+      "video_refs": ["v06", "v08"],
+      "drills": [],
+      "last_worked": null
+    },
+    {
+      "id": "sacadas",
+      "name": "Sacadas",
+      "category": "vocabulary",
+      "status": "someday",
+      "notes": "Displacement vocabulary. Back sacada = the hip-first ocho mechanic (see ochos). Only after giros and timing are solid.",
+      "video_refs": ["v14"],
+      "drills": [],
+      "last_worked": null
+    },
+    {
+      "id": "boleos",
+      "name": "Boleos",
+      "category": "vocabulary",
+      "status": "someday",
+      "notes": "2026-06-16: started exploring (front+back) as the APPLICATION of active free_leg work — NOT promoted to active (depth over breadth; rides under free_leg). Linear and circular. High floorcraft cost — open/uncrowded-floor or practica ONLY, never a crowded milonga. MECHANIC: the boleo is the knee-pendulum rebound — relaxed lower leg whips as a REACTION to the hip/dissociation reversing direction. Lead from energy/dissociation, never yank the arm, never throw/kick the leg. Relaxed = fast. The helicóptero (v02) is a boleo-based adornment.",
+      "video_refs": ["v02"],
+      "drills": [
+        "Solo back boleo: from a back-ocho/dissociation, reverse the hip rotation and let the relaxed lower leg whip back & up — knee-pendulum rebound, not a kick. [free_leg v33/v16 + v02]",
+        "Solo front boleo: same, whip comes forward across; lower leg brushes the standing shin.",
+        "Practica check (partner): does it come from your body or are you forcing her leg? Is she comfortable/unsurprised? Free floor only."
+      ],
+      "last_worked": "2026-06-16"
+    },
+    {
+      "id": "adornments_leader",
+      "name": "Adornments (leader)",
+      "category": "vocabulary",
+      "status": "someday",
+      "notes": "Leader embellishments — small, low, tasteful. The free-leg/pendulum work is the prerequisite. Lápiz and (low) helicóptero are the playlist's leader adornments.",
+      "video_refs": ["v02", "v09", "v13"],
+      "drills": [
+        "Lápiz: big toe 'draws' circles on the floor (front→back). 8 lápices/leg with cross-back to switch; then lápiz + pivot (toward, then away from the lápiz direction). [v13]",
+        "Double lápiz: tiny fast knee-circle + big slow hip-lápiz — big dynamic contrast, very elegant. [v13]",
+        "Low helicóptero: step + boleo-forward (lower leg brushing the other shin) + change weight + boleo-forward + step, optionally a tiny jump. [v02]"
+      ],
+      "last_worked": null
+    },
+    {
+      "id": "musicality_phrasing",
+      "name": "Musicality — phrasing",
+      "category": "musicality",
+      "status": "active",
+      "notes": "Dancing the structure of the song: ~8-count phrases, where to move and where to pause, 'closing' phrases and sections. The biggest jump available to a technically-solid intermediate. GOVERNED BY HIS OWN FRAMEWORK: CPE-8 + ROLA in knowledge/musicality.md — phrasing lives under Czas (frazowanie, pauzy). Core rule: ONE change per phrase, max TWO per section, fall back to 'Neutral' preset if the follower loses readability. Musicality is technique, not decoration.",
+      "framework": "knowledge/musicality.md (CPE-8 + ROLA)",
+      "video_refs": [],
+      "drills": [
+        "15-min daily routine [musicality.md]: 0-3 'hear the phrase' (clap the pulse, mark where the music breathes); 3-8 quality caminata (1 min each: Neutral, then change only Energia, only Czas, only Rozmiar, then mix at 1-change-per-phrase); 8-12 pause + closing; 12-15 dance one ROLA template over a whole song.",
+        "Domykanie fraz: put a 'full stop' at the end of every other phrase (collect feet, stable axis, micro-pause) and a 'comma' (brief suspension) on the others. [musicality.md]",
+        "'Nie liczę – słyszę': count 1-8 only for the first 30s, then recognise phrases by ear (instrument/cadence changes), no counting. [musicality.md]"
+      ],
+      "last_worked": "2026-06-16"
+    },
+    {
+      "id": "musicality_rhythm",
+      "name": "Musicality — rhythm",
+      "category": "musicality",
+      "status": "someday",
+      "notes": "The building blocks of rhythm: beat, double-time, half-time/pause, syncopation, triplets. Drill over a trivial step (forward-change-back-change) so all focus is on timing. Practice tip: CLAP the rhythm first, then transfer to feet. Use a metronome (58bpm), not music — nothing hides bad timing. In CPE-8 terms this is the Czas knob (szybkość/pauzy); see knowledge/musicality.md.",
+      "framework": "knowledge/musicality.md (CPE-8: Czas)",
+      "video_refs": ["v22"],
+      "drills": [
+        "Beat + active/passive leg: strong beat=active leg, weak beat=passive (still accented). Step exactly on (or slightly late) — we all anticipate. [v22]",
+        "Double time (one subdivision/beat); half-time/pause (skip beats — slow weight transfer through the pause, bend down to build tension). [v22]",
+        "Syncopation: accent a step where there's normally none (the 'and', or 2nd/3rd/4th subdivision). [v22]",
+        "Triplets (beat split in 3, ≠ vals); then combine triplet + double-time in one sequence. [v22]"
+      ],
+      "last_worked": null
+    },
+    {
+      "id": "musicality_dynamics",
+      "name": "Musicality — dynamics & quality (CPE-8)",
+      "category": "musicality",
+      "status": "someday",
+      "notes": "Contrast WITHOUT adding figures — the heart of his anti-monotony system. The CPE-8 knobs: Energia (ciężar/lekkość, napięcie), Gęstość (events per phrase), plus Rozmiar/Rotacja/Bliskość (Przestrzeń). The insight: monotony comes from a CONSTANT movement-quality, not from too few figures. Even plain walking stops being monotonous if the quality varies. Full system in knowledge/musicality.md.",
+      "framework": "knowledge/musicality.md (CPE-8 + ROLA)",
+      "video_refs": ["v22"],
+      "drills": [
+        "Presets like gears: Neutral (small/soft/low-density) · Rytmiczny · Płynny/legato · Zawieszony (pauses/suspense). Dance a song shifting between them. [musicality.md]",
+        "Gałka ciężaru (3 min): 30s light, 30s heavy, then switch every phrase WITHOUT changing the step. [musicality.md]",
+        "Kontrast gęstości: phrase 1-2 caminata+pauses only, phrase 3-4 add density (more direction changes/micro-accents), phrase 5-6 back to minimal — so 'more' means something. [musicality.md]",
+        "Section arc A-B-A-B-A via ROLA templates (prezencja → napęd → szept → kulminacja → domknięcie), max 2 knobs per section. [musicality.md]"
+      ],
+      "last_worked": null
+    },
+    {
+      "id": "orchestras",
+      "name": "Dancing the orchestra",
+      "category": "musicality",
+      "status": "someday",
+      "notes": "Adapting the dance to D'Arienzo (drive/staccato) vs Di Sarli (legato/pauses) vs Pugliese (dynamics/drama) vs Troilo. tango-coach owns the social framing; this topic owns building the ear + matched vocabulary. Pairs with the ROLA section-roles in knowledge/musicality.md — that doc lists training tracks per quality (Di Sarli Bahía Blanca = legato/space; Pugliese La Yumba = pauses/suspense; etc.).",
+      "framework": "knowledge/musicality.md (ROLA + training tracks)",
+      "video_refs": [],
+      "drills": [
+        "Blind-listen drill: identify the orchestra/era, name one feature, pick how you'd dance it.",
+        "Use the musicality.md track list: pick one track for a target quality (legato / pauses / rhythm) and dance only that quality. [musicality.md]"
+      ],
+      "last_worked": null
+    },
+    {
+      "id": "floorcraft",
+      "name": "Floorcraft & navigation",
+      "category": "navigation",
+      "status": "someday",
+      "notes": "Navigating the ronda without collisions, protecting the follower, dancing small in tight space. A core intermediate leader skill that's often under-trained — directly shapes how welcome he is on the floor. Promote to active if it's a real gap (ask at intake).",
+      "video_refs": [],
+      "drills": [
+        "Milonga: dance one tanda consciously keeping line-of-dance discipline and a safe bubble — count near-misses.",
+        "Practica in a small marked box: full dance using only small vocabulary, no exits from the box."
+      ],
+      "last_worked": null
+    },
+    {
+      "id": "codigos",
+      "name": "Codigos & cabeceo",
+      "category": "navigation",
+      "status": "solid",
+      "notes": "Cabeceo/mirada, ronda etiquette, tanda/cortina structure, entering/exiting the floor. tango-coach owns the social strategy; here so it can be drilled/refined if needed.",
+      "video_refs": [],
+      "drills": [],
+      "last_worked": null
+    },
+    {
+      "id": "connection",
+      "name": "Connection & lead clarity",
+      "category": "partnering",
+      "status": "solid",
+      "notes": "The through-line of everything: is the lead clear, is the follower comfortable, is there a real conversation? The scoreboard tango-coach tracks (follower experience) lives here.",
+      "video_refs": [],
+      "drills": [
+        "Practica: lead with eyes closed for one song — forces clarity through the body, not visual cues.",
+        "Ask a partner to over-follow exactly what's led (no anticipation) to expose unclear leads."
+      ],
+      "last_worked": null
+    }
+  ]
+}

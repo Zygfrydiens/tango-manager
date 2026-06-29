@@ -1,0 +1,12 @@
+# Sibling project — has its own repo, not part of Tango Manager
+diet manager/
+
+# IDE
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+
+# Claude local-only settings
+.claude/settings.local.json

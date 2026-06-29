@@ -1,0 +1,60 @@
+{
+  "_about": "MUSICALITY IDEAS — reusable systems and ways of hearing/dancing the music. NOT a song catalogue. The flagship system (CPE-8 + ROLA) lives in full in knowledge/musicality.md; entries here are the index/handles into it plus standalone ideas. id convention: mus-<slug>.",
+  "_template": {
+    "id": "mus-<slug>",
+    "name": "",
+    "short_description": "",
+    "when_to_use": "",
+    "movement_quality": "",
+    "phrase_or_section_logic": "",
+    "compatible_figures": [],
+    "risks_or_limits": "",
+    "notes": "",
+    "related_items": [],
+    "source_links": []
+  },
+  "ideas": [
+    {
+      "id": "mus-cpe8",
+      "name": "CPE-8 — the eight knobs of movement quality",
+      "short_description": "Monotony comes from a CONSTANT movement-quality, not from too few figures. Vary the 8 knobs (Czas / Przestrzeń / Energia) instead of adding vocabulary. Even plain walking stops being monotonous if the quality varies.",
+      "when_to_use": "Always — it's the base operating system for musicality. Especially when a dance feels flat despite 'enough figures'.",
+      "movement_quality": "The knobs: Czas (speed, pauses, phrasing), Przestrzeń (size/Rozmiar, rotation, closeness), Energia (weight/lightness, tension, density).",
+      "phrase_or_section_logic": "ONE change per phrase, max TWO per section. Fall back to the 'Neutral' preset if the follower loses readability.",
+      "compatible_figures": ["fig-caminata", "fig-back-ocho", "fig-ochito"],
+      "risks_or_limits": "Changing too many knobs at once = unreadable. The discipline IS the value.",
+      "notes": "Patryk's own framework. The caminata is its perfect demonstrator.",
+      "related_items": ["con-cpe8-rola-system", "fig-caminata"],
+      "source_links": ["knowledge/musicality.md"]
+    },
+    {
+      "id": "mus-rola",
+      "name": "ROLA — one role per section",
+      "short_description": "Give each musical section a single one-word role (prezencja / napęd / szept / kulminacja / domknięcie…) and let that role govern the quality choices for the whole section.",
+      "when_to_use": "Structuring a whole song; deciding the arc A-B-A-B-A.",
+      "phrase_or_section_logic": "One ROLA per section; change of section = change of role = the big contrast. Within a section, stay in character (max two knob changes).",
+      "risks_or_limits": "Switching role mid-section muddies the arc.",
+      "related_items": ["con-cpe8-rola-system", "con-section-arc"],
+      "source_links": ["knowledge/musicality.md"]
+    },
+    {
+      "id": "mus-presets",
+      "name": "Quality presets (gears)",
+      "short_description": "Pre-set quality combinations you shift between like gears: Neutral (small/soft/low-density), Rytmiczny, Płynny/legato, Zawieszony (pauses/suspense).",
+      "when_to_use": "When you need to change quality fast and cleanly without thinking knob-by-knob — shift a whole gear at a section boundary.",
+      "related_items": ["mus-cpe8", "mus-rola"],
+      "source_links": ["knowledge/musicality.md"]
+    },
+    {
+      "id": "mus-orchestra-character",
+      "name": "Orchestra → character",
+      "short_description": "Each orchestra/era carries a default dance character; match your quality and vocabulary to it. This is what transfers a sequence built on one song to another song of the same character.",
+      "phrase_or_section_logic": "D'Arienzo / Biagi → rhythmic, driving, playful (staccato). Di Sarli / Fresedo → legato, elegant, romantic. Donato → playful, rhythmic, melodic. Pugliese → dramatic, dynamic. Troilo → lyrical, balanced. Canaro / De Caro → classic. Piazzolla → modern, rhythmic, dramatic.",
+      "when_to_use": "Choosing what to dance for a tanda; deciding whether a known sequence fits a new song.",
+      "risks_or_limits": "A guide, not a law — individual recordings vary; the specific song's energy overrides the orchestra's average.",
+      "notes": "Drives the sequence index in figures.json (each sequence's `character` is inferred from its orchestra).",
+      "related_items": ["con-cpe8-rola-system"],
+      "source_links": ["knowledge/musicality.md (training tracks per quality)"]
+    }
+  ]
+}

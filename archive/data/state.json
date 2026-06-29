@@ -1,0 +1,27 @@
+{
+  "role": "leader",
+  "level": "intermediate",
+  "phase": "refinement",
+  "phase_note": "Intermediate-leader refinement phase: depth over breadth. Make the fundamentals extraordinary, develop musicality and connection. New vocabulary only when it serves a named purpose.",
+  "season_goal": "[INTAKE] — primary goal not yet set. Fill in during first coaching session.",
+  "active_topics": ["free_leg", "dissociation", "musicality_phrasing"],
+  "active_topics_note": "2026-06-16: Patryk named free leg as a real priority ('I really need to work on free leg') — promoted free_leg to active, parked walk (its pendulum engine lives inside the free-leg work, so not abandoned). Boleos kept as someday/application of free leg, drilled but NOT a 4th active topic (depth over breadth).",
+  "week_counter": 1,
+  "current_week_started": "2026-06-15",
+  "week_starts_on": "monday",
+  "created": "2026-06-15",
+  "phase_log": [
+    {
+      "date": "2026-06-15",
+      "phase": "refinement",
+      "note": "Tango manager bootstrapped. Confirmed: leader, intermediate, two-skill team (tango-coach + practice-planner), scheduling wanted. Goals/schedule/style still [INTAKE]."
+    }
+  ],
+  "adjustments_log": [
+    {
+      "date": "2026-06-16",
+      "change": "active_topics: parked 'walk', promoted 'free_leg' to active. New trio: free_leg, dissociation, musicality_phrasing.",
+      "why": "Patryk named free leg as a priority and wants to work boleos (front+back). Free leg is the engine of boleos/adornments, so it anchors the work; boleos stay 'someday' as the application, not a separate active topic. Walk's pendulum engine lives inside the free-leg drills."
+    }
+  ]
+}

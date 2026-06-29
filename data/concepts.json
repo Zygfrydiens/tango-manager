@@ -1,0 +1,147 @@
+{
+  "_about": "CONCEPTS — Patryk's own thinking frameworks AND per-piece dance plans, in one DB distinguished by `type`. This is the HEART of the system: the main output of the collaborator is usually a mental model / decision system here, not fixed choreography. Per-piece plans (e.g. Bomboncito) live here as `type: plan` — there is deliberately NO separate song database. id convention: con-<slug>.",
+  "_types": {
+    "concept": "a defined idea / vocabulary of thinking (e.g. spotlight)",
+    "system": "a structured framework with rules (e.g. CPE-8 + ROLA)",
+    "way-of-thinking": "a reusable in-the-dance decision model (e.g. how to improvise a playful quick-burst)",
+    "plan": "a section-by-section plan for a specific piece (e.g. Bomboncito) — carries a `piece` field"
+  },
+  "_template": {
+    "id": "con-<slug>",
+    "name": "",
+    "type": "way-of-thinking",
+    "short_description": "",
+    "detailed_description": "",
+    "how_to_think_during_dance": "",
+    "when_to_use": "",
+    "piece": "",
+    "related_items": [],
+    "source_links": [],
+    "notes": ""
+  },
+  "concepts": [
+    {
+      "id": "con-spotlight",
+      "name": "Spotlight",
+      "type": "concept",
+      "short_description": "Who is carrying more of the movement/work in a moment — leader, follower, or both. Not just a 'show' idea; it applies socially too.",
+      "detailed_description": "Spotlight = who's doing more / who the eye is on. Often one partner is more active while the other supports; 'both' means the workload is genuinely shared, not a default. Calesita is the textbook split: she's featured (spotlight follower) while the leader does the travelling — so 'featured' and 'doing the locomotion' can sit with different partners.",
+      "how_to_think_during_dance": "When composing something to be watched, decide per figure/section who holds the spotlight and shape the movement to send the eye there.",
+      "related_items": ["fig-calesita", "fig-boleo", "fig-caminata"]
+    },
+    {
+      "id": "con-cpe8-rola-system",
+      "name": "CPE-8 + ROLA — the anti-monotony system",
+      "type": "system",
+      "short_description": "Patryk's flagship musicality system: monotony comes from constant movement-QUALITY, not too few figures. Vary the 8 CPE knobs (one change per phrase, max two per section); give each section a one-word ROLA role.",
+      "detailed_description": "Full system in knowledge/musicality.md. Core: vary quality not vocabulary; protect readability with the 'one change per phrase' rule and a Neutral fallback preset; structure the song as an A-B-A-B-A arc of section roles.",
+      "how_to_think_during_dance": "Pick the section's ROLA role → stay in that character → change at most one quality knob per phrase → big contrast only at section boundaries.",
+      "related_items": ["mus-cpe8", "mus-rola", "mus-presets", "con-section-arc", "fig-caminata"],
+      "source_links": ["knowledge/musicality.md"]
+    },
+    {
+      "id": "con-section-arc",
+      "name": "Building an arc without choreography (A-B-A-B-A)",
+      "type": "way-of-thinking",
+      "short_description": "Compose a whole dance as a contrast of section characters, not a fixed step sequence. Each section gets a role; the contrast BETWEEN sections is the dance.",
+      "how_to_think_during_dance": "Hold one character per section (presence → drive → whisper → climax → resolution). Keep changes small inside a section; spend the big quality shift at the boundary. The walk + quality changes can carry an entire arc with almost no vocabulary.",
+      "related_items": ["con-cpe8-rola-system", "mus-rola", "con-plan-bomboncito"],
+      "source_links": ["knowledge/musicality.md"]
+    },
+    {
+      "id": "con-improvise-playful-quicks",
+      "name": "Improvising a playful quick-burst (S S | q×6)",
+      "type": "way-of-thinking",
+      "short_description": "Anchor on the slows, spill small/compact/witty on the quicks, resolve home. Small > big, on-spot > traveling, tease timing > add vocabulary.",
+      "detailed_description": "DO: small on-the-spot vocabulary (ochitos, ocho cortado, rebotes, quick weight-changes); traspié/contratiempo as the playful engine; changes of direction inside the run; accent/tease the timing; light rebounding energy; a clean landing on a slow anchor. AVOID: big/travelling figures at speed; boleos/spectacular; legato/melodic moves; heavy/dramatic qualities; stuffing every quick; blurring the slows; forcing her legs to hit the speed.",
+      "how_to_think_during_dance": "Anchor slow · spill small · tease the timing · land home.",
+      "when_to_use": "Any playful, rhythmic phrase with a slow-anchor + quick-run shape.",
+      "related_items": ["fig-ochito", "fig-ocho-cortado", "qual-playful", "qual-elastic", "qual-small", "con-romantic-slow"]
+    },
+    {
+      "id": "con-romantic-slow",
+      "name": "Dancing a romantic, slow part",
+      "type": "way-of-thinking",
+      "short_description": "Quality over vocabulary: slow legato walk, pauses/suspension, calesita, barrida, soft ochos, her embellishments. Avoid rhythmic/quick/spectacular. Let stillness speak.",
+      "detailed_description": "DO: slow legato walk; pauses & suspensions (the pause is a move); soft (legato-voiced) ochos; calesita featuring her; barrida; tender sandwich; give her embellishments a still frame; the cross with a slow resolution. AVOID: rhythmic/quick vocabulary; staccato accents; boleos/spectacular/big travelling; filling every beat.",
+      "how_to_think_during_dance": "Slow the transfer · shrink the vocabulary · let her decorate · let the pauses speak.",
+      "when_to_use": "Slow, melodic, romantic passages (Di Sarli, Fresedo, the singing parts).",
+      "related_items": ["fig-caminata", "fig-calesita", "fig-front-ocho", "fig-back-ocho", "qual-legato", "qual-delicate", "qual-suspended", "qual-intimate", "con-improvise-playful-quicks"]
+    },
+    {
+      "id": "con-plan-bomboncito",
+      "name": "Bomboncito — section plan",
+      "type": "plan",
+      "piece": "Bomboncito",
+      "short_description": "A→B: rhythmic-legato opening (3×8) into a delicate romantic close (4+4+6), resolving on a suspended pause on 5-6.",
+      "detailed_description": "PART A (3 phrases × 8, ROLA presence): legato walk, let a rhythmic undertone climb across the three phrases (caminata → +accents → back ochos/ochito). PART B (4+4+6, ROLA song/whisper): B1 read as 'S S | q×6' = two legato anchors + an ochito run (decelerate onto her axis to set up the calesita); B2 calesita featuring her; B3 = the phrase + pause on 5-6 where the embellishment IS the pause (suspended, resolve). The spine is the A→B quality shift: rhythmic-legato ⇒ delicate-romantic.",
+      "notes": "The &-tail cell (1-2-3-and-4-and) is the same quick-quick as ocho cortado's 1&2 3&4 — voice it softly in B, or move the literal ocho cortado into A's rhythmic undertone. Stored as a plan (not a song-DB entry) per the no-song-catalogue rule.",
+      "related_items": ["fig-caminata", "fig-back-ocho", "fig-ochito", "fig-calesita", "qual-legato", "qual-delicate", "qual-suspended", "con-improvise-playful-quicks", "con-romantic-slow", "con-section-arc", "mus-cpe8"]
+    },
+    {
+      "id": "con-one-sequence-many-contexts",
+      "name": "One sequence in different musical contexts",
+      "type": "way-of-thinking",
+      "short_description": "The same sequence changes meaning when you change its QUALITY to fit the section — don't learn a new sequence per song, re-voice the one you have.",
+      "how_to_think_during_dance": "Keep the footwork, swap the quality preset (rhythmic ↔ legato ↔ suspended) to match the section's character. A rhythmic sequence danced legato becomes a different thing.",
+      "related_items": ["con-cpe8-rola-system", "mus-presets", "mus-orchestra-character"]
+    },
+    {
+      "id": "con-embrace-states",
+      "name": "Embrace states — the gears",
+      "type": "system",
+      "short_description": "Patryk's embraces sorted by the quality/steps they enable, NOT by open vs close. Five functional 'gears', each pre-loading a movement preset and tagged with a shoutable five-element nickname (Naruto-jutsu style): Viento/Standard (relaxed/neutral), Rayo/Strong (small + very dynamic), Agua/Hip-movement (spiral; big AND small controlled), Tierra/Milonguero (low, heart-to-heart, little rhythmic steps), Fuego (wide + explosive, show only). The physical handle for con-embrace-as-gear.",
+      "detailed_description": "STANDARD · 'Viento' (wind) — relaxed, cool. Open and close embrace are ONE gear quality-wise; the difference is visual + the hugging feeling (and close constrains space/vocabulary). The home/default gear; default left-hand grip. FACE/intention: thinking and longing — a touch of sorrow/sadness, gazing into the empty void. ≈ Neutral preset. STRONG · 'Rayo' (lightning) — shoulderblades pulled down AND FORWARD, engaged, elbows drawn in, left hand grips TIGHTER (for strong connection + stopping power), CORE ACTIVE; the elbows on the open side carry a SPRING feeling between them (elastic tension across the frame) for better connection. FACE/intention: a pained thought, as if in conflict/disagreement — if smiling it reads 'seriously?! hehe', if not, just 'seriously?!'. Built for small, VERY dynamic steps; sharp/electric; quality goes compact/staccato/grounded. ≈ Rytmiczny preset. HIP-MOVEMENT · 'Agua' (water) — relaxed: soft knees, weight down, body carried a little low, default left-hand grip, core released so the spiral of the movement (especially forward) can travel all the way up through to the shoulderblades. The HIPS are the engine — their movement drives the figures and gives a back sacada (and similar) its quality. Enables big steps AND small, more controlled, more arrhythmic steps. Quality legato/elastic/spiral/controlled. ≈ Płynny-legato preset (and supports Zawieszony control). FACE/intention: slight disagreement, a little pain — sorrow but nostalgic, semi-sweet; give attention to the FOLLOWER, not the space. MILONGUERO · 'Tierra' (earth) — old-style close embrace: body lower, knees soft, left hand barely present (low/tucked) with little-to-no grip, right hand connecting strongly on her back — heart-to-heart connection. Built for little steps in quiet-but-rhythmic music: milonga, crosses, fast rebotes, ocho cortado, ochitos. Quality small/compact/grounded/intimate, rhythmic-but-quiet. ≈ Rytmiczny-but-low. FACE/intention: a bright, confident, playful smile — 'I will show you!'. The clean insight: the gears are the PHYSICAL TRIGGERS for his existing quality presets — change the embrace, the preset comes with it. FUEGO · 'Fuego' (fire) — the WIDE strong gear: Rayo's strength scaled out. Shoulders apart, down AND FORWARD, active, strong; core active; exaggerate the toes so each step is more active; legs push DOWN into the floor before the step (load); arms wide with the feeling of stretching an elastic band; left hand grips TIGHTER (connection + stopping power); the elbows on the open side carry the same SPRING feeling between them for better connection. Built for big, explosive figures — boleos, ganchos, sacadas at scale (La Clavada Section 2). Quality wide/big/spectacular/dramatic/elastic. FACE/intention: a small, cheeky, slight smile — 'as if I know something others don't' (think it and the smile happens). SHOW / PRACTICA / open-floor ONLY — never a crowded ronda (same floor cost as fig-boleo). The band-stretch arms + toe/leg push ARE the load; the figure is the release. Distinction: Agua KEEPS the spiral inside the body (contained, fluid); Fuego THROWS it out (the boleo).",
+      "how_to_think_during_dance": "Pick the gear for the section, call its element to yourself ('Tierra', 'Agua', 'Rayo'…) and let the embrace CARRY the preset so the conscious mind is freed. Shift gears at section boundaries (the ROLA role change made physical), not mid-section — see con-embrace-as-gear.",
+      "when_to_use": "Choosing/managing quality across a song; executing a section-boundary contrast without juggling 8 knobs.",
+      "related_items": ["con-embrace-as-gear", "mus-presets", "mus-rola", "con-section-arc", "con-cpe8-rola-system", "con-improvise-playful-quicks", "fig-ocho-cortado", "fig-cruzada", "fig-ochito", "fig-boleo", "fig-giro", "qual-grounded", "qual-staccato", "qual-compact", "qual-legato", "qual-elastic", "qual-big", "qual-intimate", "qual-small", "qual-spectacular", "qual-dramatic"],
+      "notes": "NAMING (Naruto-style, full technique vs shout): full ceremonial names are 'Abrazo del Viento', 'Abrazo del Rayo', 'Abrazo del Agua', 'Abrazo de la Tierra' (la tierra is feminine → de la), 'Abrazo del Fuego'. Mid-dance he shouts only the one-word element ('Viento!', 'Rayo!'…), exactly as Naruto shortens 'Katon: …' to 'Katon!'. 'Viento Abrazo' is NOT idiomatic Spanish — the of-the construction is required. FACE/INTENTION is a MENTAL-CUE axis, not decoration: thinking the inner state PRODUCES both the expression and the gear's quality (Patryk's own mechanism — 'by thinking it I achieve the smile'). Use it like a second shout, inner. GAZE rides with it: Viento into the void, Agua/Tierra to the follower. GRIP axis (left hand, open side): Rayo & Fuego TIGHTER (connection + stopping power); Viento & Agua default; Tierra little-to-none (the heart-to-heart connection carries it). Tighter grip is for holding/arresting the frame, NOT for leading from the arm — the lead still comes from the body (cf. fig-boleo: never yank the arm). Rayo and Fuego are the same STRENGTH family (shoulders down/active, core active) — the split is size: Rayo small/contained/grounded, Fuego wide/projected/band-stretch. Rayo vs Tierra both do small rhythmic steps but differ in volume: Rayo (Strong) is loud/sharp/electric; Tierra (Milonguero) is quiet/low/heart-connected. Risk on STRONG/Rayo: 'engaged', not 'stiff' — a genuinely stiffened embrace chokes the lead and tires the follower; keep the shoulderblades active, not locked. Element nicknames are in-the-dance mnemonics (Naruto jutsu-shout style), one shoutable Spanish word per gear. open-vs-close lives INSIDE Standard as a visual/intimacy axis, distinct from the existing figures.json `embrace_context` field. If figures later get queried by gear, promote an `embrace_state` field then (schema-grows-from-use), not now.",
+      "source_links": ["knowledge/ideas.md"]
+    },
+    {
+      "id": "con-embrace-as-gear",
+      "name": "Embrace as a gear lever (not a knob)",
+      "type": "way-of-thinking",
+      "short_description": "Change the embrace during a song to shift whole quality 'gears'. An embrace change is not one CPE-8 knob — it pre-loads a full preset at once, so it's a section-boundary tool, not a per-phrase texture tool.",
+      "detailed_description": "Opening the embrace bundles bigger/circular/playful/spectacular all at once; closing bundles small/intimate/grounded/social. So instead of juggling 8 knobs, pull one physical lever and a whole gear (preset) comes with it. The gears themselves live in con-embrace-states.",
+      "how_to_think_during_dance": "Bind 2–3 embrace states to presets for the song. Shift at section boundaries (the physical handle for the ROLA role change). Let the embrace carry the change.",
+      "when_to_use": "Managing musicality across a song; spending the big quality contrast at a section seam.",
+      "related_items": ["con-embrace-states", "mus-presets", "mus-rola", "con-section-arc"],
+      "notes": "Boundary tool, not texture tool: changing embrace mid-section or per phrase blows the 'one change per phrase, max two per section' readability budget and reads as fidgety. Mnemonic: embrace = gear, not knob — shift at the boundary, not in the bar. Seen live: Brenno Marques & Fátima Caracoche, La Clavada (MSTF 2025 Poreč), Section 4.",
+      "source_links": ["knowledge/ideas.md"]
+    },
+    {
+      "id": "con-load-legato-spend-accent",
+      "name": "Load on the legato, spend on the accent (the 'pam-pam')",
+      "type": "way-of-thinking",
+      "short_description": "For music that sustains a long note then snaps to a sharp accent (legato → 'pam-pam'), store energy across the sustain (suspended/elastic) and release it on the accent. The release figure — boleo, gancho, rebote — is interchangeable.",
+      "how_to_think_during_dance": "Stretch and LOAD on the long note (don't fill it — the emptiness is the wind-up); fire ONE sharp figure on the accent; reset. The sustain is the spring, the accent is the release.",
+      "when_to_use": "Legato-then-accent phrases; dramatic builds (Pugliese-ish); any 'long note → quick hit' motif.",
+      "related_items": ["qual-suspended", "qual-elastic", "qual-staccato", "fig-boleo", "fig-gancho", "con-embrace-states", "con-section-arc"],
+      "notes": "From La Clavada Section 2 (Brenno & Fátima). Pairs with the Abrazo del Fuego / del Rayo gears (the load/release frame).",
+      "source_links": ["La Clavada — MSTF 2025 Poreč (video obs)"]
+    },
+    {
+      "id": "con-linear-to-circular",
+      "name": "Circular as the exit from linear (transition grammar)",
+      "type": "way-of-thinking",
+      "short_description": "Close a linear/progressive passage by hinging into a circular figure — the change of TRAJECTORY marks the seam, no new vocabulary needed. The cross (cruzada) is the natural hinge: it collects her onto one axis, the clean release into a giro or calesita.",
+      "how_to_think_during_dance": "Walk linear → collect on the cross → release into a giro/calesita to close the section. The trajectory change IS the punctuation (CPE-8 Przestrzeń/rotation knob).",
+      "when_to_use": "Section/phrase boundaries; varying trajectory without adding figures.",
+      "related_items": ["fig-cruzada", "fig-giro", "fig-calesita", "fig-caminata", "con-section-arc", "mus-cpe8"],
+      "notes": "Brenno & Fátima's signature in La Clavada — used at multiple section seams (Sections 1 & 2). There the giros were also the ENGINE of forward travel (circular figure still progressing the line).",
+      "source_links": ["La Clavada — MSTF 2025 Poreč (video obs)"]
+    },
+    {
+      "id": "con-system-change",
+      "name": "System change (parallel ⇄ cross)",
+      "type": "concept",
+      "short_description": "Switching between parallel and cross system as a structural lever — it changes which feet/figures are available and re-textures the walk without stopping it.",
+      "how_to_think_during_dance": "Change system mid-walk to refresh the texture or set up a figure; keep walking through the change so it reads as continuity, not a reset.",
+      "when_to_use": "Mid-phrase texture change; setting up sacadas/ganchos; keeping a long walk alive.",
+      "related_items": ["fig-caminata", "fig-cruzada", "con-one-sequence-many-contexts", "con-linear-to-circular"],
+      "notes": "Seen in La Clavada Section 2 (second half).",
+      "source_links": ["La Clavada — MSTF 2025 Poreč (video obs)"]
+    }
+  ]
+}

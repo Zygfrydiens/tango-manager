@@ -1,0 +1,27 @@
+{
+  "_comment": "Template for a daily tango session log. Copy to data/YYYY-MM-DD.json. A 'session' is any tango day: class, practica, milonga, or solo practice. Fill what's relevant; omit the rest. One file per date can hold multiple sessions (e.g. class then milonga same night) in the 'sessions' array.",
+  "date": "YYYY-MM-DD",
+  "sessions": [
+    {
+      "type": "milonga",
+      "_type_options": "class | practica | milonga | solo | festival | workshop",
+      "venue": "",
+      "duration_min": null,
+      "focus_topics": ["topic_id"],
+      "what_happened": "",
+      "what_worked": "",
+      "what_felt_off": "",
+      "follower_experience": "",
+      "_follower_experience_note": "The scoreboard: did partners feel comfortable/musical? returned cabeceos? second tandas? any feedback?",
+      "music_notes": "",
+      "_music_notes_note": "Orchestras/eras danced, anything about phrasing/dynamics.",
+      "carry_forward": "",
+      "_carry_forward_note": "The ONE thing to bring to next session.",
+      "mood": "",
+      "_mood_options": "great | good | flat | rough"
+    }
+  ],
+  "body": "",
+  "_body_note": "Fatigue, soreness, mobility — relevant to dissociation/posture/axis.",
+  "notes": ""
+}

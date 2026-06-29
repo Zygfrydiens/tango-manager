@@ -1,0 +1,154 @@
+{
+  "_about": "Reusable DANCE QUALITIES — the adjectives of movement. Attach them to figures, sequences, musicality ideas, and concepts via their `dance_qualities` or `related_items`. A quality answers 'how is it danced', not 'what is danced'. id convention: qual-<slug>. ALL fields optional — a one-line entry is a valid entry; the collaborator fills cues/risks only when it actually knows them.",
+  "_id_convention": "qual-<slug>  (e.g. qual-legato). Reference from other DBs by this id.",
+  "_template": {
+    "id": "qual-<slug>",
+    "name": "",
+    "description": "What this quality feels like / means in one or two lines.",
+    "physical_cues": "Body cues that produce it (axis, knees, embrace, timing of the weight change).",
+    "musical_cues": "What in the music invites it (legato strings, marcato beat, a pause, a build).",
+    "works_well_with": ["qual-... or fig-... or mus-..."],
+    "risks": "Where it goes wrong / what it costs (readability, floor space, monotony).",
+    "examples": "Concrete moments where it shines.",
+    "related_items": []
+  },
+  "qualities": [
+    {
+      "id": "qual-big",
+      "name": "Big",
+      "description": "Large amplitude — long steps, full pivots, the dance fills space.",
+      "physical_cues": "Project further; commit the axis fully into each step; open the embrace if needed.",
+      "musical_cues": "Wide legato phrases, dramatic orchestras (Pugliese), section climaxes.",
+      "works_well_with": ["qual-dramatic", "qual-spectacular"],
+      "risks": "Eats floor; unsafe in a crowded ronda; tiring if used constantly.",
+      "related_items": ["qual-small"]
+    },
+    {
+      "id": "qual-small",
+      "name": "Small / compact",
+      "description": "Minimal amplitude — short steps, contained pivots, dancing 'inside a phone booth'.",
+      "physical_cues": "Tiny weight changes, free foot stays close, no big projections.",
+      "musical_cues": "Crowded floor, intimate passages, fast rhythmic sections where big won't fit.",
+      "works_well_with": ["qual-intimate", "qual-grounded"],
+      "risks": "Can read as timid or monotonous if quality never varies.",
+      "related_items": ["qual-big", "qual-compact"]
+    },
+    {
+      "id": "qual-legato",
+      "name": "Legato",
+      "description": "Connected, continuous, no visible seams between movements — one long breath.",
+      "physical_cues": "Slow the weight transfer; never stop fully; let one movement melt into the next.",
+      "musical_cues": "Sustained strings, bowed lines, Di Sarli, the 'singing' parts.",
+      "works_well_with": ["qual-elastic", "qual-suspended"],
+      "risks": "Loses definition if there's no contrast; can blur the beat.",
+      "related_items": ["qual-staccato"]
+    },
+    {
+      "id": "qual-staccato",
+      "name": "Staccato",
+      "description": "Sharp, detached, clearly articulated — each step a distinct event.",
+      "physical_cues": "Fast, decisive weight change ('light switch'); clean arrivals; hold the shape briefly.",
+      "musical_cues": "Marcato beat, D'Arienzo drive, piano/bandoneon accents.",
+      "works_well_with": ["qual-playful", "qual-grounded"],
+      "risks": "Relentless staccato becomes choppy/military; needs legato to breathe against.",
+      "related_items": ["qual-legato"]
+    },
+    {
+      "id": "qual-playful",
+      "name": "Playful",
+      "description": "Witty, surprising, light — teasing the music, little jokes with timing.",
+      "physical_cues": "Syncopations, traspiés, quick changes of mind, suspensions and 'gotchas'.",
+      "musical_cues": "Bouncy rhythmic tangos and milonga; call-and-response phrases.",
+      "works_well_with": ["qual-staccato", "qual-elastic"],
+      "risks": "Reads as restless or unclear if the lead isn't crisp; tiring for the follower if constant.",
+      "related_items": ["qual-dramatic"]
+    },
+    {
+      "id": "qual-spectacular",
+      "name": "Spectacular",
+      "description": "Made to be watched — large, impressive, 'wow' shapes.",
+      "physical_cues": "Boleos, big sweeping turns, height/extension, dynamic contrast.",
+      "musical_cues": "Climaxes, the final phrase of a song, dramatic orchestras.",
+      "works_well_with": ["qual-big", "qual-dramatic"],
+      "risks": "Floor-unsafe; can prioritise looks over the follower's comfort. Show/practica, rarely social.",
+      "related_items": ["qual-simple"]
+    },
+    {
+      "id": "qual-intimate",
+      "name": "Intimate",
+      "description": "Inward, close, for the two of you — not for an audience.",
+      "physical_cues": "Close embrace, small vocabulary, shared breath, subtle weight shifts.",
+      "musical_cues": "Tender vocal passages, quiet sections, slow tangos.",
+      "works_well_with": ["qual-small", "qual-grounded", "qual-suspended"],
+      "risks": "Can feel flat if never contrasted with energy.",
+      "related_items": ["qual-spectacular"]
+    },
+    {
+      "id": "qual-compact",
+      "name": "Compact",
+      "description": "Efficient and tight — small footprint but still full of intention.",
+      "physical_cues": "Economy of movement; everything close to the axis; no wasted travel.",
+      "musical_cues": "Dense rhythmic sections; crowded floors.",
+      "works_well_with": ["qual-small", "qual-staccato"],
+      "related_items": ["qual-small"]
+    },
+    {
+      "id": "qual-dramatic",
+      "name": "Dramatic",
+      "description": "High emotional stakes — tension, weight, intensity.",
+      "physical_cues": "Deep into the floor, strong dissociation, pauses loaded with energy.",
+      "musical_cues": "Pugliese, big builds and releases, minor-key swells.",
+      "works_well_with": ["qual-big", "qual-suspended", "qual-grounded"],
+      "risks": "Wears thin if everything is dramatic — drama needs calm to land.",
+      "related_items": ["qual-playful", "qual-intimate"]
+    },
+    {
+      "id": "qual-elastic",
+      "name": "Elastic",
+      "description": "Stretch-and-release — energy stored and returned, like a rubber band.",
+      "physical_cues": "Load the dissociation/free leg, then let the rebound do the work (the boleo mechanic).",
+      "musical_cues": "Phrases with a clear tension/resolution shape.",
+      "works_well_with": ["qual-legato", "qual-playful"],
+      "related_items": ["qual-suspended"]
+    },
+    {
+      "id": "qual-grounded",
+      "name": "Grounded",
+      "description": "Heavy, rooted, connected to the floor — weight clearly in the earth.",
+      "physical_cues": "Bend into the standing leg, push the floor away, slow controlled descents.",
+      "musical_cues": "Strong bass/marcato, walking sections, milonguero feel.",
+      "works_well_with": ["qual-staccato", "qual-dramatic", "qual-intimate"],
+      "related_items": ["qual-suspended"]
+    },
+    {
+      "id": "qual-suspended",
+      "name": "Suspended",
+      "description": "Held in the air, time stretched — a loaded pause before release.",
+      "physical_cues": "Arrive and wait on the axis; keep tension alive; release on a musical cue.",
+      "musical_cues": "Pauses, fermatas, the silence before a phrase restarts.",
+      "works_well_with": ["qual-legato", "qual-dramatic", "qual-elastic"],
+      "risks": "Dead air if the suspension has no energy in it — suspense, not a stop.",
+      "related_items": ["qual-grounded"]
+    },
+    {
+      "id": "qual-delicate",
+      "name": "Delicate",
+      "description": "Light, fine, precise handling — a careful, tender touch. Not the same as legato (continuity) or suspended (held); it's about the FINENESS of the handling.",
+      "physical_cues": "Light embrace pressure, precise axis, small careful weight shifts; give her room to be exact.",
+      "musical_cues": "Tender vocal lines, soft romantic passages, quiet sections.",
+      "works_well_with": ["qual-legato", "qual-intimate", "qual-suspended"],
+      "risks": "Can tip into tentative/under-led if the clarity drops — delicate must still be clear.",
+      "examples": "The calesita; featuring her embellishments in a slow romantic part.",
+      "related_items": ["fig-calesita", "con-romantic-slow"]
+    },
+    {
+      "id": "qual-simple",
+      "name": "Simple",
+      "description": "Plain and clear — walking, basic vocabulary, nothing to prove.",
+      "physical_cues": "Clean walk, complete weight changes, comfortable embrace.",
+      "musical_cues": "Almost anything — simplicity danced with quality is never boring.",
+      "works_well_with": ["qual-grounded", "qual-intimate", "qual-legato"],
+      "related_items": ["qual-spectacular"]
+    }
+  ]
+}

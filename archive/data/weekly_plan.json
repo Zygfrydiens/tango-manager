@@ -1,0 +1,17 @@
+{
+  "_comment": "This week's tango plan: which nights are class / practica / milonga / solo, and the focus for each. tango-coach sets this at the weekly review; both skills read it at check-in. Days are placeholders until Patryk's real schedule is captured at intake.",
+  "week_of": "2026-06-15",
+  "active_topics": ["free_leg", "dissociation", "musicality_phrasing"],
+  "days": {
+    "monday": {"slot": null, "focus": null, "note": "[INTAKE] schedule unknown"},
+    "tuesday": {"slot": "solo+practica", "focus": "SOLO 90min: free leg→boleos (front+back), sequences (his list, shadow-lead), musicality 15-min routine. PRACTICA 2h: take boleos + sequences to a partner, end in connection/joy.", "note": "First real practice day logged."},
+    "wednesday": {"slot": null, "focus": null},
+    "thursday": {"slot": "solo_or_practica", "focus": "UNCERTAIN day. If solo: ~20-25min light — keep the free-leg/boleo groove warm + 10min musicality. Don't pile load before Friday. If practica: take boleos + sequences, refine (don't introduce new).", "note": "Deliberately light to protect Friday's practica+milonga."},
+    "friday": {"slot": "practica+milonga", "focus": "PRACTICA: refine boleos (front+back) + sequences, end in flowing tandas. MILONGA: NO drilling — dance for joy/connection, boleos only if floor genuinely open. Milonga strategy = tango-coach.", "note": "Heavy day (practica then milonga). Keep Wed/Thu light."},
+    "saturday": {"slot": null, "focus": null},
+    "sunday": {"slot": "weekly_review", "focus": "set next week's 1-3 active topics, review the week's dancing"}
+  },
+  "_slot_options": "class | practica | milonga | solo | rest | weekly_review",
+  "social_events": [],
+  "swap_history": []
+}
