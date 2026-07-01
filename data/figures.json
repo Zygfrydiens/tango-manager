@@ -3,7 +3,7 @@
   "_principles": [
     "All fields optional. A 4-tag stub is a complete-enough entry. Never interrogate for every field.",
     "Schema GROWS FROM USE: when a one-off note gains a real query use-case, promote it to a field (this is how `trajectory` and `spotlight` were born).",
-    "The high-value axes for querying: trajectory, spotlight, dance_qualities, floor_safety, usage, musical_fit, rating.",
+    "The high-value axes for querying: trajectory, spotlight, dance_qualities, gears, floor_safety, usage, musical_fit, rating.",
     "GDrive is the master for sequences; store links, never duplicate the source."
   ],
   "_id_convention": "fig-<slug> / seq-<NNN>. Reference qualities by qual-<slug>, musicality ideas by mus-<slug>, concepts/plans by con-<slug>.",
@@ -15,6 +15,7 @@
     "floor_safety": "safe | needs_space | practica_only | show_only",
     "usage": "social | spectacular | show  — the intent/context the move belongs to",
     "dance_qualities": "list of qual-<slug> ids and/or free words",
+    "gears": "list of embrace gears (con-embrace-states) the figure works well in: viento | rayo | agua | tierra | fuego. Promoted 2026-07-02 after the first milonga field test showed figures are GEAR-LOCKED — a gear is a vocabulary filter, not just a quality preset. Absent = not yet assessed on the floor. Rule: a figure the current gear can't serve waits for the next section seam.",
     "rating": "Patryk's own 0-10 preference for the move (NOT progress tracking — a 'how much I like/trust this' signal he filters by)"
   },
   "_template": {
@@ -33,6 +34,7 @@
     "usage": "",
     "musical_fit": "",
     "dance_qualities": [],
+    "gears": [],
     "rating": null,
     "notes": "",
     "related_items": [],
@@ -55,7 +57,8 @@
       "usage": "social",
       "musical_fit": "Almost anything — marcato rhythm, legato melodic lines, syncopation. Advances the line of dance, so it's also the default ronda-safe move.",
       "dance_qualities": ["qual-simple", "qual-legato", "qual-staccato", "qual-elastic", "qual-grounded"],
-      "notes": "A CARRIER figure — range of quality AND range of trajectory, not a fixed shape. The proof-of-concept for the whole anti-monotony idea: vary the quality, not the figure.",
+      "gears": ["viento", "rayo", "agua", "tierra", "fuego"],
+      "notes": "Works in EVERY gear — each gear re-voices the same walk. A CARRIER figure — range of quality AND range of trajectory, not a fixed shape. The proof-of-concept for the whole anti-monotony idea: vary the quality, not the figure.",
       "related_items": ["fig-cruzada", "fig-back-ocho", "fig-giro", "con-cpe8-rola-system", "mus-cpe8"]
     },
     {
@@ -74,7 +77,8 @@
       "usage": "social",
       "musical_fit": "Rhythmic music; voice the beat. Can progress down the floor (unlike the front ocho).",
       "dance_qualities": ["qual-staccato", "qual-playful", "qual-grounded"],
-      "notes": "Rhythmic, not melodic (per Patryk — overrides the legato tag from the original mined notes).",
+      "gears": ["viento", "agua", "tierra"],
+      "notes": "Rhythmic, not melodic (per Patryk — overrides the legato tag from the original mined notes). GEAR MAPPING follows the two techniques: hip-first = Agua (the hip/spiral engine — same mechanic as the back sacada), leg-first = Tierra (small, close, catch-her-foot); Viento carries the neutral social ocho.",
       "related_items": ["fig-front-ocho", "fig-ochito", "fig-giro"],
       "source_links": ["knowledge/playlist_tango_technique_at_home.md (v14)"]
     },
@@ -109,6 +113,7 @@
       "floor_safety": "safe",
       "usage": "social",
       "dance_qualities": ["qual-small", "qual-compact", "qual-staccato", "qual-playful"],
+      "gears": ["rayo", "tierra"],
       "notes": "Kept standalone deliberately — it's a distinctive tool Patryk reaches for by name, even though it's derivable from ocho + {small, fast}.",
       "related_items": ["fig-back-ocho", "fig-front-ocho", "con-improvise-playful-quicks"]
     },
@@ -146,7 +151,8 @@
       "usage": "social",
       "musical_fit": "Rhythmic, driving music (D'Arienzo feel). Lands the 1&2, 3&4 quick cell. Stays on its spot — a crowded-floor workhorse.",
       "dance_qualities": ["qual-staccato", "qual-playful", "qual-compact", "qual-small", "qual-grounded"],
-      "notes": "Spotlight left unset — wasn't obvious, Patryk hasn't said.",
+      "gears": ["rayo", "tierra"],
+      "notes": "Spotlight left unset — wasn't obvious, Patryk hasn't said. Tierra lists it by name (quiet-but-rhythmic close embrace); Rayo serves the loud/sharp version of the same cell.",
       "related_items": ["fig-cruzada", "fig-back-ocho", "mus-cpe8", "seq-010"]
     },
     {
@@ -163,7 +169,8 @@
       "floor_safety": "safe",
       "usage": "social",
       "dance_qualities": ["qual-simple", "qual-grounded"],
-      "notes": "A hub with many ENTRIES as well as exits — reachable from unexpected approaches (e.g. a circular step right around the leader into a back cross, seen in La Clavada Section 3). The linear→circular HINGE: it collects her onto one axis, the clean release into a giro or calesita.",
+      "gears": ["viento", "rayo", "agua", "tierra", "fuego"],
+      "notes": "Works in every gear — a neutral collection all embraces share, which also makes it the natural SEAM for a gear shift (she's on one axis, the frame is free to reconfigure). A hub with many ENTRIES as well as exits — reachable from unexpected approaches (e.g. a circular step right around the leader into a back cross, seen in La Clavada Section 3). The linear→circular HINGE: it collects her onto one axis, the clean release into a giro or calesita.",
       "related_items": ["fig-back-ocho", "fig-ocho-cortado", "fig-calesita", "fig-giro", "con-linear-to-circular"],
       "source_links": ["knowledge/playlist_tango_technique_at_home.md (v06, v08)"]
     },
@@ -199,7 +206,8 @@
       "usage": "spectacular",
       "musical_fit": "Climaxes, accents, the end of a dramatic phrase. Punctuation, not a sentence.",
       "dance_qualities": ["qual-spectacular", "qual-dramatic", "qual-elastic", "qual-big"],
-      "notes": "High floorcraft cost — open floor or practica ONLY, never a crowded milonga.",
+      "gears": ["fuego", "rayo"],
+      "notes": "High floorcraft cost — open floor or practica ONLY, never a crowded milonga. Wants the load/release frame: Fuego for the big version, Rayo for the contained/social-scale whip (per con-load-legato-spend-accent).",
       "related_items": ["fig-back-ocho", "qual-elastic"],
       "source_links": ["knowledge/playlist_tango_technique_at_home.md (v02)"]
     },
@@ -218,7 +226,8 @@
       "usage": "spectacular",
       "musical_fit": "Sharp accents — voices the quick 'pam-pam' hits at the end of a sustained note.",
       "dance_qualities": ["qual-elastic", "qual-playful", "qual-dramatic"],
-      "notes": "From the show (La Clavada Section 2), their main accent tool. Wants the Abrazo del Fuego gear (load + release). A compact close-embrace social gancho exists, but the big version is needs_space. Promoted from sequence-only (seq-022/024/028/030/037) to a real figure.",
+      "gears": ["fuego", "rayo"],
+      "notes": "From the show (La Clavada Section 2), their main accent tool. Wants the Abrazo del Fuego gear (load + release); the compact close-embrace social gancho maps to Rayo (small + sharp + stopping power). A compact close-embrace social gancho exists, but the big version is needs_space. Promoted from sequence-only (seq-022/024/028/030/037) to a real figure.",
       "related_items": ["fig-boleo", "fig-back-ocho", "con-load-legato-spend-accent", "con-embrace-states", "qual-elastic", "seq-022", "seq-024", "seq-028"],
       "source_links": ["La Clavada — Brenno Marques & Fátima Caracoche, MSTF 2025 Poreč (video obs)"]
     },
@@ -236,7 +245,8 @@
       "usage": "spectacular",
       "musical_fit": "Displacement accents; 'little sacadas' punctuating a rhythmic line.",
       "dance_qualities": ["qual-grounded", "qual-elastic"],
-      "notes": "From the show (La Clavada Section 2) as 'little sacadas' — displacement accents. The BACK SACADA quality comes from the hips → wants the Abrazo del Agua gear. Promoted from sequence-only (seq-021/023/026).",
+      "gears": ["agua", "fuego"],
+      "notes": "From the show (La Clavada Section 2) as 'little sacadas' — displacement accents. The BACK SACADA quality comes from the hips → wants the Abrazo del Agua gear; sacadas AT SCALE are Fuego's list. Promoted from sequence-only (seq-021/023/026).",
       "related_items": ["con-embrace-states", "fig-giro", "qual-grounded", "seq-021", "seq-023", "seq-026"],
       "source_links": ["La Clavada — Brenno Marques & Fátima Caracoche, MSTF 2025 Poreč (video obs)"]
     },

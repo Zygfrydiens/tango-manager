@@ -13,6 +13,31 @@ Newest at the top.
 
 ---
 
+## 2026-07-02 · Gears survive first field test — and turn out to be vocabulary filters
+
+**Field report (milonga, 2026-07-01):** the gear concept works in the wild — shifting the embrace
+really does carry the quality change. **But:** some known steps refuse to work in certain gears.
+
+**The reframe:** gear ↔ figure incompatibility is *information, not a bug*. A gear = quality preset
+**+ vocabulary filter** — it opens some shelves of the parts bin and closes others. Mid-dance rule:
+**a figure the current gear can't serve waits for the next seam** — shift at the boundary, then take
+the figure. Forcing it through the wrong gear is where the lead goes muddy (arm-compensation).
+
+**Promoted:** `gears` field on figures (the query axis this discovery earns — anticipated in
+con-embrace-states' own notes). Obvious cells filled from the gear specs; the interesting cells are
+Patryk's floor data — *which combos actually failed*.
+
+**Collaborator's unconfirmed guesses at the failures (confirm/deny):**
+- Giro in Tierra — left hand barely present + low frame can't communicate rotation at scale?
+- Boleo/gancho from Viento or Tierra — no loaded spring in the frame to release?
+- Calesita in Rayo — too gripped/sharp for her suspension?
+
+**Open hunch (stronger now):** gear *shifts* live in collection points — the cross, a pause, a
+suspension. If figures are gear-locked, the seams matter even more. Transition mechanics remain the
+missing chapter.
+
+---
+
 ## 2026-06-28 · Embrace = gear lever, not a knob
 
 **The idea:** change the embrace *during* a song to shift "gears" — a deliberate management tool for
