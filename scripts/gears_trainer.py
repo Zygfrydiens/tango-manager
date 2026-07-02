@@ -21,16 +21,22 @@ in sync if the gear specs change. An em-dash cue means the gear spec is silent
 for that station: keep it Viento-neutral, and if that feels wrong mid-drill,
 that's a missing spec worth adding to the concept.
 
-Sound: three woodblock-style clicks synthesized at startup and played from
-memory -- accent (new gear), checkpoint (a station lights), low quiet tick
-(sustain/hold beats). To use your own clicks, drop WAVs into sounds/ named
-gears_announce.wav / gears_checkpoint.wav / gears_tick.wav.
+Sound: three woodblock-style clicks synthesized at startup -- accent (new
+gear), checkpoint (a station lights), low quiet tick (sustain/hold beats) --
+played through winmm waveOut, an ordinary app audio stream (falls back to
+winsound.PlaySound, then the Tk bell). Click volume slider in the UI. To use
+your own clicks, drop WAVs into sounds/ named gears_announce.wav /
+gears_checkpoint.wav / gears_tick.wav (44.1 kHz 16-bit mono rides waveOut;
+other formats fall back to PlaySound, at file volume).
 
-Run:   py "scripts/gears_trainer.py"
-Keys:  Space start/pause | N next gear | Up/Down tempo | F11 fullscreen
-Smoke: py "scripts/gears_trainer.py" --smoke   (headless self-test, ~7 s)
+Run:     py "scripts/gears_trainer.py"
+Keys:    Space start/pause | N next gear | Up/Down tempo | F11 fullscreen
+Smoke:   py "scripts/gears_trainer.py" --smoke        (headless self-test, ~7 s)
+Silent?  py "scripts/gears_trainer.py" --sound-test   (system beep vs clicks)
 """
 
+import array
+import ctypes
 import io
 import json
 import math
@@ -68,18 +74,20 @@ SOUNDS_DIR = Path(__file__).resolve().parent.parent / "sounds"
 # Metronome clicks: woodblock-style, synthesized at startup (noise transient +
 # two decaying sine partials). Drop your own WAVs in sounds/ to override:
 # gears_announce.wav / gears_checkpoint.wav / gears_tick.wav.
+SR = 44100
+
 CLICK_SPECS = {              # freq Hz, amplitude 0..1, decay tau s
-    "announce": (1760, 1.00, 0.014),     # new gear called (accent)
-    "checkpoint": (1245, 0.90, 0.011),   # a station lights
-    "tick": (880, 0.42, 0.009),          # sustain / hold beats (quieter)
+    "announce": (1760, 1.00, 0.016),     # new gear called (accent)
+    "checkpoint": (1245, 0.95, 0.012),   # a station lights
+    "tick": (880, 0.55, 0.010),          # sustain / hold beats (quieter)
 }
 
 
-def _synth_click(freq, amp, tau, sr=44100, dur=0.07):
+def _synth_click(freq, amp, tau, vol=1.0, dur=0.085):
     rng = random.Random(7)  # deterministic transient
     frames = bytearray()
-    for i in range(int(sr * dur)):
-        t = i / sr
+    for i in range(int(SR * dur)):
+        t = i / SR
         env = math.exp(-t / tau)
         s = math.sin(2 * math.pi * freq * t) \
             + 0.4 * math.sin(2 * math.pi * freq * 2.41 * t)
@@ -87,28 +95,111 @@ def _synth_click(freq, amp, tau, sr=44100, dur=0.07):
             s += 2.2 * (rng.random() * 2 - 1) * (1 - t / 0.002)
         if t < 0.0004:  # sub-ms attack ramp, avoids a DC pop
             s *= t / 0.0004
-        v = max(-1.0, min(1.0, amp * env * s / 2.4))
+        v = max(-1.0, min(1.0, amp * env * s / 1.9)) * vol
         frames += struct.pack("<h", int(v * 32767))
+    return bytes(frames)
+
+
+def _pcm_to_wav(pcm):
     buf = io.BytesIO()
     w = wave.open(buf, "wb")
     w.setnchannels(1)
     w.setsampwidth(2)
-    w.setframerate(sr)
-    w.writeframes(bytes(frames))
+    w.setframerate(SR)
+    w.writeframes(pcm)
     w.close()
     return buf.getvalue()
 
 
-def _load_clicks():
+def _scale_pcm(pcm, vol):
+    a = array.array("h")
+    a.frombytes(pcm)
+    return array.array("h", (int(x * vol) for x in a)).tobytes()
+
+
+def _load_clicks(vol=1.0):
+    """{kind: (raw_pcm_or_None, wav_bytes)} — pcm feeds waveOut, wav feeds PlaySound."""
     clicks = {}
     for kind, (freq, amp, tau) in CLICK_SPECS.items():
         custom = SOUNDS_DIR / ("gears_%s.wav" % kind)
-        try:
-            clicks[kind] = custom.read_bytes() if custom.is_file() \
-                else _synth_click(freq, amp, tau)
-        except Exception:
-            clicks[kind] = _synth_click(freq, amp, tau)
+        if custom.is_file():
+            try:
+                data = custom.read_bytes()
+                pcm = None
+                with wave.open(io.BytesIO(data)) as w:
+                    if (w.getnchannels(), w.getsampwidth(),
+                            w.getframerate()) == (1, 2, SR):
+                        pcm = _scale_pcm(w.readframes(w.getnframes()), vol)
+                clicks[kind] = (pcm, data)
+                continue
+            except Exception:
+                pass
+        pcm = _synth_click(freq, amp, tau, vol)
+        clicks[kind] = (pcm, _pcm_to_wav(pcm))
     return clicks
+
+
+class _WaveOutPlayer:
+    """Clicks as raw PCM through winmm waveOut — an ordinary app audio stream,
+    routed like any media app. winsound.PlaySound can ride a separately muted
+    path (System Sounds), which is exactly the 'app looks fine, hears nothing'
+    failure mode this sidesteps."""
+
+    WAVE_MAPPER = 0xFFFFFFFF
+    WHDR_DONE = 0x00000001
+
+    class WAVEFORMATEX(ctypes.Structure):
+        _fields_ = [("wFormatTag", ctypes.c_ushort), ("nChannels", ctypes.c_ushort),
+                    ("nSamplesPerSec", ctypes.c_uint), ("nAvgBytesPerSec", ctypes.c_uint),
+                    ("nBlockAlign", ctypes.c_ushort), ("wBitsPerSample", ctypes.c_ushort),
+                    ("cbSize", ctypes.c_ushort)]
+
+    class WAVEHDR(ctypes.Structure):
+        _fields_ = [("lpData", ctypes.c_void_p), ("dwBufferLength", ctypes.c_uint),
+                    ("dwBytesRecorded", ctypes.c_uint), ("dwUser", ctypes.c_void_p),
+                    ("dwFlags", ctypes.c_uint), ("dwLoops", ctypes.c_uint),
+                    ("lpNext", ctypes.c_void_p), ("reserved", ctypes.c_void_p)]
+
+    def __init__(self):
+        self.m = ctypes.WinDLL("winmm")
+        fmt = self.WAVEFORMATEX(1, 1, SR, SR * 2, 2, 16, 0)  # PCM mono 16-bit
+        self.h = ctypes.c_void_p()
+        err = self.m.waveOutOpen(ctypes.byref(self.h), self.WAVE_MAPPER,
+                                 ctypes.byref(fmt), None, None, 0)
+        if err:
+            raise OSError("waveOutOpen failed (%d)" % err)
+        self.active = []  # (WAVEHDR, buffer) kept alive while playing
+
+    def play(self, pcm):
+        self._sweep()
+        buf = ctypes.create_string_buffer(pcm, len(pcm))
+        hdr = self.WAVEHDR()
+        hdr.lpData = ctypes.cast(buf, ctypes.c_void_p)
+        hdr.dwBufferLength = len(pcm)
+        if self.m.waveOutPrepareHeader(self.h, ctypes.byref(hdr), ctypes.sizeof(hdr)):
+            return
+        if self.m.waveOutWrite(self.h, ctypes.byref(hdr), ctypes.sizeof(hdr)):
+            self.m.waveOutUnprepareHeader(self.h, ctypes.byref(hdr), ctypes.sizeof(hdr))
+            return
+        self.active.append((hdr, buf))
+
+    def _sweep(self):
+        keep = []
+        for hdr, buf in self.active:
+            if hdr.dwFlags & self.WHDR_DONE:
+                self.m.waveOutUnprepareHeader(self.h, ctypes.byref(hdr),
+                                              ctypes.sizeof(hdr))
+            else:
+                keep.append((hdr, buf))
+        self.active = keep
+
+    def close(self):
+        try:
+            self.m.waveOutReset(self.h)
+            self._sweep()
+            self.m.waveOutClose(self.h)
+        except Exception:
+            pass
 
 # ------------------------------------------------------------------ the data
 # Body stations, top -> bottom (the anatomical scan order).
@@ -220,7 +311,6 @@ class GearsTrainer:
         self.cycle_count = 0
         self.fullscreen = False
         self.smoke_ok = False
-        self.clicks = _load_clicks()
 
         # knobs
         self.bpm = tk.IntVar(value=60)
@@ -230,11 +320,19 @@ class GearsTrainer:
         self.mode = tk.StringVar(value="cues")   # cues | names | blind
         self.shuffle_var = tk.BooleanVar(value=False)
         self.sound_var = tk.BooleanVar(value=True)
+        self.vol = tk.IntVar(value=80)           # click volume, percent
         self.station_vars = {k: tk.BooleanVar(value=True) for k, _, _ in STATIONS}
         self.gear_vars = {g: tk.BooleanVar(value=True) for g in GEAR_ORDER}
 
         if not smoke:
             self._load_settings()
+        self.clicks = _load_clicks(self._ival(self.vol, 80, 10, 100) / 100.0)
+        self.player = None
+        if winsound:  # windows -> try the waveOut backend first
+            try:
+                self.player = _WaveOutPlayer()
+            except Exception:
+                self.player = None
         self._build_ui()
         self._bind_keys()
         root.protocol("WM_DELETE_WINDOW", self._on_close)
@@ -326,7 +424,14 @@ class GearsTrainer:
         tk.Checkbutton(row2, text="sound", variable=self.sound_var,
                        command=lambda: self._click("checkpoint"), **chk_style).pack(
             side="left", padx=4)
-        tk.Label(row2, text="Space start/pause · N next gear · Up/Down tempo · F11 fullscreen",
+        tk.Label(row2, text="vol", **lbl_style).pack(side="left", padx=(10, 0))
+        vol_scale = tk.Scale(row2, variable=self.vol, from_=10, to=100,
+                             orient="horizontal", length=90, showvalue=0,
+                             bg=PANEL, fg=TEXT, troughcolor="#0b0e13",
+                             highlightthickness=0, activebackground=PANEL, takefocus=0)
+        vol_scale.pack(side="left", padx=(2, 4))
+        vol_scale.bind("<ButtonRelease-1>", lambda e: self._set_volume())
+        tk.Label(row2, text="Space start · N next · Up/Down tempo · F11 full",
                  **lbl_style).pack(side="right")
 
         row3 = tk.Frame(panel, bg=PANEL)
@@ -531,15 +636,22 @@ class GearsTrainer:
     def _click(self, kind):
         if not self.sound_var.get():
             return
-        if winsound:
+        pcm, wav = self.clicks[kind]
+        if self.player and pcm:
+            self.player.play(pcm)
+        elif winsound:
             try:
                 winsound.PlaySound(
-                    self.clicks[kind],
+                    wav,
                     winsound.SND_MEMORY | winsound.SND_ASYNC | winsound.SND_NODEFAULT)
             except Exception:
                 pass
         else:
             self.root.bell()
+
+    def _set_volume(self):
+        self.clicks = _load_clicks(self._ival(self.vol, 80, 10, 100) / 100.0)
+        self._click("checkpoint")
 
     # ------------------------------------------------------------------ misc
 
@@ -568,7 +680,8 @@ class GearsTrainer:
             return
         for name, var in [("bpm", self.bpm), ("bpc", self.bpc), ("hold", self.hold),
                           ("lead", self.lead), ("mode", self.mode),
-                          ("shuffle", self.shuffle_var), ("sound", self.sound_var)]:
+                          ("shuffle", self.shuffle_var), ("sound", self.sound_var),
+                          ("volume", self.vol)]:
             if name in data:
                 try:
                     var.set(data[name])
@@ -590,6 +703,7 @@ class GearsTrainer:
             "mode": self.mode.get(),
             "shuffle": self.shuffle_var.get(),
             "sound": self.sound_var.get(),
+            "volume": self._ival(self.vol, 80, 10, 100),
             "stations": {k: v.get() for k, v in self.station_vars.items()},
             "gears": {g: v.get() for g, v in self.gear_vars.items()},
         }
@@ -600,12 +714,52 @@ class GearsTrainer:
 
     def _on_close(self):
         self._pause()
+        if self.player:
+            self.player.close()
         if not self.smoke:
             self._save_settings()
         self.root.destroy()
 
 
+def _sound_test():
+    """Play each audio path in sequence so silence can be localized."""
+    print("Gears Trainer sound test")
+    print("------------------------")
+    if not winsound:
+        print("winsound unavailable (not Windows) -- the app would use the Tk bell.")
+        return 0
+    clicks = _load_clicks(1.0)
+    print("[1/3] Windows system beep (MessageBeep)...")
+    winsound.MessageBeep()
+    time.sleep(1.0)
+    print("[2/3] three clicks via winsound.PlaySound...")
+    for kind in ("announce", "checkpoint", "tick"):
+        winsound.PlaySound(clicks[kind][1], winsound.SND_MEMORY)
+        time.sleep(0.30)
+    print("[3/3] three clicks via winmm waveOut (the app's primary path)...")
+    try:
+        player = _WaveOutPlayer()
+    except Exception as e:
+        print("  waveOut unavailable: %s" % e)
+        return 1
+    for kind in ("announce", "checkpoint", "tick"):
+        pcm = clicks[kind][0]
+        if pcm:
+            player.play(pcm)
+        time.sleep(0.30)
+    time.sleep(0.3)
+    player.close()
+    print()
+    print("Heard [3] (maybe [2] too)  -> the app will click: check its sound box + vol slider.")
+    print("Heard only [1]             -> PlaySound path muted; waveOut result decides.")
+    print("Heard nothing at all       -> Windows side: default output device, and the")
+    print("                              volume mixer (python.exe may be muted).")
+    return 0
+
+
 def main():
+    if "--sound-test" in sys.argv:
+        sys.exit(_sound_test())
     smoke = "--smoke" in sys.argv
     root = tk.Tk()
     app = GearsTrainer(root, smoke=smoke)
