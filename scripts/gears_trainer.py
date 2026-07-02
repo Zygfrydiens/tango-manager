@@ -21,17 +21,25 @@ in sync if the gear specs change. An em-dash cue means the gear spec is silent
 for that station: keep it Viento-neutral, and if that feels wrong mid-drill,
 that's a missing spec worth adding to the concept.
 
+Sound: three woodblock-style clicks synthesized at startup and played from
+memory -- accent (new gear), checkpoint (a station lights), low quiet tick
+(sustain/hold beats). To use your own clicks, drop WAVs into sounds/ named
+gears_announce.wav / gears_checkpoint.wav / gears_tick.wav.
+
 Run:   py "scripts/gears_trainer.py"
 Keys:  Space start/pause | N next gear | Up/Down tempo | F11 fullscreen
 Smoke: py "scripts/gears_trainer.py" --smoke   (headless self-test, ~7 s)
 """
 
+import io
 import json
+import math
 import random
+import struct
 import sys
-import threading
 import time
 import tkinter as tk
+import wave
 from pathlib import Path
 
 try:
@@ -54,9 +62,53 @@ STATUS_READ = "#c9d2de"
 STATUS_SCAN = "#5f6b7a"
 STATUS_HOLD = "#f5b942"
 
-FREQ_ANNOUNCE, FREQ_LIGHT, FREQ_TICK = 1319, 880, 494
-
 SETTINGS_FILE = Path.home() / ".tango_gears_trainer.json"
+SOUNDS_DIR = Path(__file__).resolve().parent.parent / "sounds"
+
+# Metronome clicks: woodblock-style, synthesized at startup (noise transient +
+# two decaying sine partials). Drop your own WAVs in sounds/ to override:
+# gears_announce.wav / gears_checkpoint.wav / gears_tick.wav.
+CLICK_SPECS = {              # freq Hz, amplitude 0..1, decay tau s
+    "announce": (1760, 1.00, 0.014),     # new gear called (accent)
+    "checkpoint": (1245, 0.90, 0.011),   # a station lights
+    "tick": (880, 0.42, 0.009),          # sustain / hold beats (quieter)
+}
+
+
+def _synth_click(freq, amp, tau, sr=44100, dur=0.07):
+    rng = random.Random(7)  # deterministic transient
+    frames = bytearray()
+    for i in range(int(sr * dur)):
+        t = i / sr
+        env = math.exp(-t / tau)
+        s = math.sin(2 * math.pi * freq * t) \
+            + 0.4 * math.sin(2 * math.pi * freq * 2.41 * t)
+        if t < 0.002:  # the 'click' of the click
+            s += 2.2 * (rng.random() * 2 - 1) * (1 - t / 0.002)
+        if t < 0.0004:  # sub-ms attack ramp, avoids a DC pop
+            s *= t / 0.0004
+        v = max(-1.0, min(1.0, amp * env * s / 2.4))
+        frames += struct.pack("<h", int(v * 32767))
+    buf = io.BytesIO()
+    w = wave.open(buf, "wb")
+    w.setnchannels(1)
+    w.setsampwidth(2)
+    w.setframerate(sr)
+    w.writeframes(bytes(frames))
+    w.close()
+    return buf.getvalue()
+
+
+def _load_clicks():
+    clicks = {}
+    for kind, (freq, amp, tau) in CLICK_SPECS.items():
+        custom = SOUNDS_DIR / ("gears_%s.wav" % kind)
+        try:
+            clicks[kind] = custom.read_bytes() if custom.is_file() \
+                else _synth_click(freq, amp, tau)
+        except Exception:
+            clicks[kind] = _synth_click(freq, amp, tau)
+    return clicks
 
 # ------------------------------------------------------------------ the data
 # Body stations, top -> bottom (the anatomical scan order).
@@ -168,6 +220,7 @@ class GearsTrainer:
         self.cycle_count = 0
         self.fullscreen = False
         self.smoke_ok = False
+        self.clicks = _load_clicks()
 
         # knobs
         self.bpm = tk.IntVar(value=60)
@@ -270,7 +323,8 @@ class GearsTrainer:
                            command=self._refresh_texts, **chk_style).pack(side="left", padx=4)
         tk.Checkbutton(row2, text="shuffle scan order", variable=self.shuffle_var,
                        **chk_style).pack(side="left", padx=(18, 4))
-        tk.Checkbutton(row2, text="sound", variable=self.sound_var, **chk_style).pack(
+        tk.Checkbutton(row2, text="sound", variable=self.sound_var,
+                       command=lambda: self._click("checkpoint"), **chk_style).pack(
             side="left", padx=4)
         tk.Label(row2, text="Space start/pause · N next gear · Up/Down tempo · F11 fullscreen",
                  **lbl_style).pack(side="right")
@@ -397,7 +451,7 @@ class GearsTrainer:
             j, lead = ev[1], ev[2]
             left = lead - j
             self._set_status("READ · %d" % left if lead > 1 else "READ", STATUS_READ)
-            self._beep(FREQ_ANNOUNCE)
+            self._click("announce")
         elif kind == "light":
             key, i, n = ev[1], ev[2], ev[3]
             if self.current_key is not None:
@@ -405,15 +459,15 @@ class GearsTrainer:
             self.current_key = key
             self._paint(key, "current")
             self._set_status("SCAN %d/%d" % (i, n), STATUS_SCAN)
-            self._beep(FREQ_LIGHT)
+            self._click("checkpoint")
         elif kind == "hold":
             if self.current_key is not None:
                 self._paint(self.current_key, "done")
                 self.current_key = None
             self._set_status("HOLD · %d" % ev[1], STATUS_HOLD)
-            self._beep(FREQ_TICK)
+            self._click("tick")
         else:  # plain sustain tick between checkpoints
-            self._beep(FREQ_TICK)
+            self._click("tick")
 
     def _apply_gear(self):
         g = GEARS[self.gear]
@@ -474,11 +528,16 @@ class GearsTrainer:
         self.dot_after_id = self.root.after(
             110, lambda: self.dot.itemconfig(self.dot_id, fill="#2a3140"))
 
-    def _beep(self, freq):
+    def _click(self, kind):
         if not self.sound_var.get():
             return
         if winsound:
-            threading.Thread(target=winsound.Beep, args=(freq, 45), daemon=True).start()
+            try:
+                winsound.PlaySound(
+                    self.clicks[kind],
+                    winsound.SND_MEMORY | winsound.SND_ASYNC | winsound.SND_NODEFAULT)
+            except Exception:
+                pass
         else:
             self.root.bell()
 
